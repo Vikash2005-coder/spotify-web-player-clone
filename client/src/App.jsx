@@ -5,8 +5,16 @@ import './App.css'
 
 function App() {
   return (
-    <div>
-      <h1>Spotify Web Player Clone</h1>
+    <div className="h-screen flex">
+      {/* SideBar */}
+      <div className="w-60 bg-black p-4">
+        Sidebar
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 bg-spotifyGray p-4">
+        Main Content
+      </div>
     </div>
   )
 }
