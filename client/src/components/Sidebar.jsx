@@ -1,7 +1,7 @@
 import { Home, Search, Library } from "lucide-react";
 function Sidebar(){
     return(
-        <div className="w-60 bg-black p-5 flex flex-col gap-6">
+        <div className="w-60 bg-black p-5 flex flex-col gap-6 h-full">
             {/* Logo */}
             <h1 className="text-2xl font-bold text-white">
                 Spotify
@@ -17,7 +17,7 @@ function Sidebar(){
                     <Search size={20} />
                     <span>Search</span>
                 </div>
-                <div className="flex items-center gap-3 text gray-300 hover:text-white cursor-pointer">
+                <div className="flex items-center gap-3 text-gray-300 hover:text-white cursor-pointer">
                     <Library size={20}/>
                     <span>Your Library</span>
                 </div>

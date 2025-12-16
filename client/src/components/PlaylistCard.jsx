@@ -1,6 +1,6 @@
 function PlaylistCard({ title, image }){
     return(
-        <div className="bg-spotifyGray p-4 rounded-lg hover:bg:-[#282828] cursor-pointer transition">
+        <div className="bg-spotifyGray p-4 rounded-lg hover:bg-[#282828] cursor-pointer transition">
             <img
                 src={image}
                 alt={title}
