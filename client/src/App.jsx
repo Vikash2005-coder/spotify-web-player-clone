@@ -2,14 +2,11 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-
+import Sidebar from "./components/Sidebar"
 function App() {
   return (
     <div className="h-screen flex">
-      {/* SideBar */}
-      <div className="w-60 bg-black p-4">
-        Sidebar
-      </div>
+      <Sidebar/>
 
       {/* Main Content */}
       <div className="flex-1 bg-spotifyGray p-4">
@@ -19,4 +16,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
