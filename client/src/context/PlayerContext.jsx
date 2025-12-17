@@ -19,6 +19,26 @@ export function PlayerProvider({children}){
         prev===0?songs.length-1:prev-1);
         setIsPlaying(true);
     }
+    const getLikedSongs = () =>{
+        const stored = localStorage.getItem("likedSongs");
+        return stored ? JSON.parse(stored): [];
+    }
+    const [likedSongs, setLikedSongs]=useState(getLikedSongs);
+    const toggleLike = (songId) => {
+        setLikedSongs((prev) => {
+            let updated;
+
+            if (prev.includes(songId)) {
+            updated = prev.filter((id) => id !== songId);
+            } else {
+            updated = [...prev, songId];
+            }
+
+            localStorage.setItem("likedSongs", JSON.stringify(updated));
+            return updated;
+        });
+    };
+
     return (
         <PlayerContext.Provider
             value={{
@@ -32,6 +52,8 @@ export function PlayerProvider({children}){
                 setIsPlaying,
                 nextSong,
                 prevSong,
+                likedSongs,
+                toggleLike,
             }}
         >
             {children}
