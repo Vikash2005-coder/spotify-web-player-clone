@@ -17,10 +17,10 @@ export const songs = [
   },
   {
     id: 3,
-    title: "Kesariya",
-    artist: "Arijit Singh",
-    language: "Hindi",
-    audioUrl: "/songs/kesariya.mp3",
+    title: "Kanmani Anbodu Kadhalan",
+    artist: "Ilayaraja,Kamal Hassan",
+    language: "Tamil",
+    audioUrl: "/songs/kanmani.mp3",
     imageUrl: "https://picsum.photos/200?3",
   },
   {

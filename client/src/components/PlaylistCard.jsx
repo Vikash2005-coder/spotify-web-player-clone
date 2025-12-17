@@ -1,6 +1,17 @@
-function PlaylistCard({ title, image }){
+import { usePlayer } from "../context/PlayerContext";
+
+function PlaylistCard({ title, image, songIndex }){
+    const {setCurrentIndex, setIsPlaying }=usePlayer();
+
+    const handlePlay = () =>{
+        setCurrentIndex(songIndex);
+        setIsPlaying(true);
+    };
+
     return(
-        <div className="bg-spotifyGray p-4 rounded-lg hover:bg-[#282828] cursor-pointer transition">
+        <div 
+            onClick={handlePlay}
+            className="bg-spotifyGray p-4 rounded-lg hover:bg-[#282828] cursor-pointer transition">
             <img
                 src={image}
                 alt={title}
