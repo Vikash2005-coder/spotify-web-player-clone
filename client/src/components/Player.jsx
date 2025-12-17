@@ -1,8 +1,11 @@
 import { Play, Pause, SkipBack, SkipForward, Volume2 } from "lucide-react";
 import { usePlayer } from "../context/PlayerContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function Player(){
+    const[currentTime,setCurrentTime]=useState(0);
+    const[duration, setDuration]=useState(0)
+
     const {
         audioRef,
         currentSong,
@@ -24,6 +27,36 @@ function Player(){
     const togglePlay = () =>{
         setIsPlaying(prev => !prev);
     };
+    
+    useEffect(() => {
+        const audio=audioRef.current;
+        const updateTime = () =>{
+            setCurrentTime(audio.currentTime);
+            setDuration(audio.duration||0);
+        }
+        
+
+        audio.addEventListener("timeupdate",updateTime);
+        audio.addEventListener("loadmetadata",updateTime);
+        return () =>{
+            audio.removeEventListener("timeupdate",updateTime);
+            audio.removeEventListener("loadmetadata",updateTime);
+        };
+    },[audioRef]);
+
+    const handleSeek =(e) => {
+        const audio=audioRef.current;
+        const seekTime=Number(e.target.value);
+        audio.currentTime=seekTime;
+        setCurrentTime(seekTime);
+    };
+
+    const formatTime = (time) =>{
+        if (isNaN(time)) return "0:00";
+        const minutes=Math.floor(time/60);
+        const seconds=Math.floor(time%60).toString().padStart(2,"0");
+        return `${minutes}:${seconds}`;
+    }
     return(
         <div className="h-20 bg-[#181818] border-t border-gray-700 flex items-center px-4">
 
@@ -52,9 +85,19 @@ function Player(){
                     <SkipForward />
                 </div>
 
-                <div className="w-full h-1 bg-gray-600 rounded">
-                    <div className="w-1/3 h-full bg-white rounded"></div>
-                </div>
+                <div className="flex items-center gap-2 w-full text-xs text-gray-400">
+                    <span>{formatTime(currentTime)}</span>
+
+                    <input 
+                        type="range"
+                        min="0"
+                        max={duration}
+                        value={currentTime}
+                        onChange={handleSeek}
+                        className="w-full accent-white"
+                    />
+                    <span>{formatTime(duration)}</span>
+                </div>"
             </div>
 
             {/* Volume */}
