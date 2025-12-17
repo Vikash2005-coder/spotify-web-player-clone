@@ -9,10 +9,10 @@ export const songs = [
   },
   {
     id: 2,
-    title: "Vaathi Coming",
+    title: "Pathikichu",
     artist: "Anirudh Ravichander",
     language: "Tamil",
-    audioUrl: "/songs/vaathi-coming.mp3",
+    audioUrl: "/songs/pathikichu.mp3",
     imageUrl: "https://picsum.photos/200?2",
   },
   {
